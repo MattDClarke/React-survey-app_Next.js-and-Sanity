@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const [hasSubmitCompleted, setHasSubmitCompleted] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -24,10 +25,24 @@ export default function Home() {
           likes: '',
         }}
         onSubmit={async (values, { resetForm }) => {
-          await new Promise((r) => {
+          // await new Promise((r) => {
+          //   setHasSubmitCompleted(true);
+          //   setTimeout(r, 1000)
+          //   resetForm();      
+          // });                    
+          try {
+            await fetch('/api/createResponse', {
+              method: 'POST',
+              body: JSON.stringify(values),
+              type: 'application/json'
+            });  
             setHasSubmitCompleted(true);
-            setTimeout(r, 1000)
-          });
+            setResponseMessage('Thanks for your response!');
+            resetForm(); 
+          } catch (err) {
+            setResponseMessage('There was an error submitting your response. Try again please.');
+            console.error('error', err);
+          }
         }}
           >
             {({ isSubmitting }) => {
@@ -37,7 +52,7 @@ export default function Home() {
               if (hasSubmitCompleted) {
                 return (
                   <>
-                    <div>Thanks for your response!</div>
+                    <div>{ responseMessage }</div>
                   </>
                 )
               }
