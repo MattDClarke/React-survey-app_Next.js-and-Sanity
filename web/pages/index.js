@@ -2,8 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Formik, Field, Form } from 'formik';
 import styles from '../styles/Home.module.css'
+import { useState } from 'react';
 
 export default function Home() {
+  const [hasSubmitCompleted, setHasSubmitCompleted] = useState(false);
   return (
     <div className={styles.container}>
       <Head>
@@ -21,17 +23,33 @@ export default function Home() {
         initialValues={{
           likes: '',
         }}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={async (values, { resetForm }) => {
+          await new Promise((r) => {
+            setHasSubmitCompleted(true);
+            setTimeout(r, 1000)
+          });
         }}
-      >
-        <Form>
-          <label htmlFor="likes">What do you like about React?</label>
-          <Field id="likes" name="likes" placeholder="Add your answer" />
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
+          >
+            {({ isSubmitting }) => {
+              if (isSubmitting) {
+                return <div>Submitting comment…</div>
+              }
+              if (hasSubmitCompleted) {
+                return (
+                  <>
+                    <div>Thanks for your response!</div>
+                  </>
+                )
+              }
+              return (
+                <Form>
+                  <label htmlFor="likes">What do you like about React?</label>
+                  <Field id="likes" name="likes" placeholder="Add your answer" />
+                  <button type="submit" disabled={isSubmitting}>Submit</button>
+                </Form>
+              )
+            }}
+          </Formik>
         </div>
       </main>
 
