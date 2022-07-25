@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { Formik, Field, Form } from 'formik';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -16,7 +17,21 @@ export default function Home() {
           React Survey
         </h1>
         <div className={styles.formContainer}>
-          TODO: Add Survey form
+          <Formik
+        initialValues={{
+          likes: '',
+        }}
+        onSubmit={async (values) => {
+          await new Promise((r) => setTimeout(r, 500));
+          alert(JSON.stringify(values, null, 2));
+        }}
+      >
+        <Form>
+          <label htmlFor="likes">What do you like about React?</label>
+          <Field id="likes" name="likes" placeholder="Add your answer" />
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
         </div>
       </main>
 
