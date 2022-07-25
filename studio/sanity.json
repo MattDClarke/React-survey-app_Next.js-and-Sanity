@@ -4,8 +4,8 @@
     "name": "react-survey-app"
   },
   "api": {
-    "projectId": "YOUR_PROJECT_ID",
-    "dataset": "YOUR_DATASET_NAME"
+    "projectId": "2n94pwp8",
+    "dataset": "results"
   },
   "plugins": [
     "@sanity/base",
