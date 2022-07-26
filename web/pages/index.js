@@ -28,7 +28,7 @@ export default function Home() {
         onSubmit={ (values, { resetForm, setSubmitting }) => {
           client('/api/createResponse', { body: values }).then(
             data => {
-              // console.log('here is the data', data);
+              console.log('here is the data', data);
               setHasSubmitCompleted(true);
               setResponseMessage('Thanks for your response!');
               resetForm(); 

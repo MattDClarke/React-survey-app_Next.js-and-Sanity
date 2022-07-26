@@ -1,7 +1,16 @@
+import { validationSchema } from "../../helpers/validationSchema";
+import { isReqValid } from "../../utils/isReqValid";
 import { sanityClient } from "../../utils/sanityClient";
 
-export default async function handler(req, res) {
+ export default async function handler(req, res) {
   if (req.method === 'POST') {
+    // validation
+    const isValid = await isReqValid(validationSchema, req.body);
+    if (!isValid) {
+      return res.status(422).json({
+        message: 'Method not allowed',
+      });
+    }
     // Destructure the pieces of our request
     const { likes } = req.body;
     try {
@@ -11,7 +20,6 @@ export default async function handler(req, res) {
         likes,
       }) 
     } catch (err) {
-      // console.error(err);
       return res.status(500).json({ message: `Couldn't submit response` });
     }
       
