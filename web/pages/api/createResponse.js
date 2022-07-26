@@ -1,18 +1,18 @@
-import { sanityClient } from "../../lib/client";
+import { sanityClient } from "../../utils/sanityClient";
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     // Destructure the pieces of our request
-    const { likes } = JSON.parse(req.body)
+    const { likes } = req.body;
     try {
       // Use our Client to create a new document in Sanity with an object  
       await sanityClient.create({
         _type: 'surveyResponse',
-       likes
-      })
+        likes,
+      }) 
     } catch (err) {
-      console.error(err);
-      return res.status(500).json({message: `Couldn't submit response`, err});
+      // console.error(err);
+      return res.status(500).json({ message: `Couldn't submit response` });
     }
       
     return res.status(200).json({ message: 'Response submitted' });
