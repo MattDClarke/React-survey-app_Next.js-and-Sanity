@@ -51,7 +51,7 @@ export default function SurveyForm() {
             );
           }
           return (
-            <Form>
+            <Form className={styles.form}>
               <label htmlFor="jobType">
                 Are you a professional programmer or a student?
               </label>
@@ -72,7 +72,11 @@ export default function SurveyForm() {
                 <ErrorMessage name="likes" />
               </small>
 
-              <button type="submit" disabled={isSubmitting}>
+              <button
+                type="submit"
+                className={styles.button}
+                disabled={isSubmitting}
+              >
                 Submit
               </button>
             </Form>

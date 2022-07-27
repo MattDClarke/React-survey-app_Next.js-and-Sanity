@@ -1,3 +1,76 @@
 .formContainer {
   padding: 2rem;
 }
+
+.form label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.25rem 0;
+}
+
+.button {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--color-primary-dark);
+}
+
+.button[disabled] {
+  opacity: 0.5;
+}
+
+.form input,
+.form textarea {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--color-text);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 0.5rem;
+}
+
+.form select {
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.2rem;
+  border-radius: var(--border-radius);
+}
+
+.form small {
+  display: block;
+  height: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.form textarea {
+  min-width: 500px;
+  min-height: 200px;
+  max-height: 500px;
+}
+
+@media (max-width: 900px) {
+  .form label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 535px) {
+  .form textarea {
+    min-width: 100%;
+    max-width: 80vw;
+  }
+}
