@@ -8,9 +8,9 @@
 // ];
 
 export default {
-  name: 'surveyResponse',
-  title: 'React Survey',
-  type: 'document',
+  name: "surveyResponse",
+  title: "React Survey",
+  type: "document",
   fields: [
     // {
     //   title: 'Are you a professional programmer or a student?',
@@ -32,10 +32,10 @@ export default {
     //   type: 'number',
     // },
     {
-      name: 'likes',
+      name: "likes",
       title: "What do you like about React?",
-      type: 'string',
-      validation: Rule => Rule.required().min(2).max(1000)
+      type: "string",
+      validation: (Rule) => Rule.required().min(2).max(1000),
     },
     // {
     //   name: 'dislikes',
@@ -76,4 +76,4 @@ export default {
   //     }
   //   },
   // },
-}
+};

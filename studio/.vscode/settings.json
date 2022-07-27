@@ -4,5 +4,12 @@
     "titleBar.inactiveForeground": "#000000CC",
     "titleBar.activeBackground": "#f03e2f",
     "titleBar.inactiveBackground": "#f03e2f"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.format": true
   }
 }
