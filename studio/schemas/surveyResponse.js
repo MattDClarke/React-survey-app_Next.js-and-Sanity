@@ -1,26 +1,31 @@
 // import React from "react";
 
-// const JOB_TYPES = [
-//   {title: 'Full-time', value: 'fulltime'},
-//   {title: 'Freelance', value: 'freelance'},
-//   {title: 'Student', value: 'student'},
-//   {title: 'Hobby', value: 'hobby'}
-// ];
+const JOB_TYPES = [
+  { title: 'Full-time', value: 'fulltime' },
+  { title: 'Freelance', value: 'freelance' },
+  { title: 'Student', value: 'student' },
+  { title: 'Hobby', value: 'hobby' },
+];
 
 export default {
-  name: "surveyResponse",
-  title: "React Survey",
-  type: "document",
+  name: 'surveyResponse',
+  title: 'React Survey',
+  type: 'document',
   fields: [
-    // {
-    //   title: 'Are you a professional programmer or a student?',
-    //   name: 'jobType',
-    //   type: 'string',
-    //   options: {
-    //     list: JOB_TYPES, // <-- predefined values
-    //     layout: 'radio' // <-- defaults to 'dropdown'
-    //   },
-    // },
+    {
+      title: 'Are you a professional programmer or a student?',
+      name: 'jobType',
+      type: 'string',
+      options: {
+        list: JOB_TYPES, // <-- predefined values
+        layout: 'radio', // <-- defaults to 'dropdown'
+      },
+      validation: (Rule) =>
+        Rule.required().custom((jobType) => {
+          const validJobTypes = JOB_TYPES.map((job) => job.value);
+          return validJobTypes.includes(jobType) ? true : 'Invalid job type';
+        }),
+    },
     // {
     //   name: 'yearsProgramming',
     //   title: 'Number of years programming',
@@ -32,9 +37,9 @@ export default {
     //   type: 'number',
     // },
     {
-      name: "likes",
-      title: "What do you like about React?",
-      type: "string",
+      name: 'likes',
+      title: 'What do you like about React?',
+      type: 'string',
       validation: (Rule) => Rule.required().min(2).max(1000),
     },
     // {
