@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import { client } from '../utils/apiClient';
+import { validationSchema } from '../helpers/validationSchema';
 
 export default function Home() {
   const [hasSubmitCompleted, setHasSubmitCompleted] = useState(false);
@@ -25,6 +26,7 @@ export default function Home() {
         initialValues={{
           likes: '',
         }}
+        validationSchema={validationSchema}
         onSubmit={ (values, { resetForm, setSubmitting }) => {
           client('/api/createResponse', { body: values }).then(
             data => {
@@ -57,6 +59,9 @@ export default function Home() {
                 <Form>
                   <label htmlFor="likes">What do you like about React?</label>
                   <Field id="likes" name="likes" placeholder="Add your answer" />
+                  <small>
+                    <ErrorMessage name="likes" />
+                  </small>
                   <button type="submit" disabled={isSubmitting}>Submit</button>
                 </Form>
               )

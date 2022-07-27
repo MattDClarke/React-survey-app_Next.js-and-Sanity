@@ -8,7 +8,7 @@ import { sanityClient } from "../../utils/sanityClient";
     const isValid = await isReqValid(validationSchema, req.body);
     if (!isValid) {
       return res.status(422).json({
-        message: 'Method not allowed',
+        message: 'Invalid request',
       });
     }
     // Destructure the pieces of our request
