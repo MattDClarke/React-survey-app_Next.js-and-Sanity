@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 import { useState } from 'react';
 import { client } from '../utils/apiClient';
 import { validationSchema } from '../helpers/validationSchema';
@@ -18,53 +18,59 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          React Survey
-        </h1>
+        <h1 className={styles.title}>React Survey</h1>
         <div className={styles.formContainer}>
           <Formik
-        initialValues={{
-          likes: '',
-        }}
-        validationSchema={validationSchema}
-        onSubmit={ (values, { resetForm, setSubmitting }) => {
-          client('/api/createResponse', { body: values }).then(
-            data => {
-              console.log('here is the data', data);
-              setHasSubmitCompleted(true);
-              setResponseMessage('Thanks for your response!');
-              resetForm(); 
-            },
-            error => {
-              // console.error('oh no, submission failed', error);
-              setSubmitting(false);
-              setHasSubmitCompleted(true);
-              setResponseMessage('There was an error submitting your response. Try again please.');
-            },
-          )          
-        }}
+            initialValues={{
+              likes: '',
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values, { resetForm, setSubmitting }) => {
+              client('/api/createResponse', { body: values }).then(
+                (data) => {
+                  // console.log('here is the data', data);
+                  setHasSubmitCompleted(true);
+                  setResponseMessage('Thanks for your response!');
+                  resetForm();
+                },
+                (error) => {
+                  // console.error('oh no, submission failed', error);
+                  setSubmitting(false);
+                  setHasSubmitCompleted(true);
+                  setResponseMessage(
+                    'There was an error submitting your response. Try again please.'
+                  );
+                }
+              );
+            }}
           >
             {({ isSubmitting }) => {
               if (isSubmitting) {
-                return <div>Submitting comment…</div>
+                return <div>Submitting comment…</div>;
               }
               if (hasSubmitCompleted) {
                 return (
                   <>
-                    <div>{ responseMessage }</div>
+                    <div>{responseMessage}</div>
                   </>
-                )
+                );
               }
               return (
                 <Form>
                   <label htmlFor="likes">What do you like about React?</label>
-                  <Field id="likes" name="likes" placeholder="Add your answer" />
+                  <Field
+                    id="likes"
+                    name="likes"
+                    placeholder="Add your answer"
+                  />
                   <small>
                     <ErrorMessage name="likes" />
                   </small>
-                  <button type="submit" disabled={isSubmitting}>Submit</button>
+                  <button type="submit" disabled={isSubmitting}>
+                    Submit
+                  </button>
                 </Form>
-              )
+              );
             }}
           </Formik>
         </div>
@@ -83,5 +89,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }

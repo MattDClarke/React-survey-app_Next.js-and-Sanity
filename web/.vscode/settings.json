@@ -1,8 +1,15 @@
 {
-    "workbench.colorCustomizations": {
-        "titleBar.activeForeground": "#fff",
-        "titleBar.inactiveForeground": "#fff",
-        "titleBar.activeBackground": "#000",
-        "titleBar.inactiveBackground": "#000"
-    },
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#fff",
+    "titleBar.inactiveForeground": "#fff",
+    "titleBar.activeBackground": "#000",
+    "titleBar.inactiveBackground": "#000"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.format": true
+  }
 }
