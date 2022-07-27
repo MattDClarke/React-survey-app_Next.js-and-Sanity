@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { client } from '../utils/apiClient';
 import { validationSchema } from '../helpers/validationSchema';
-import { JOB_TYPES } from '../constants';
+import { JOB_TYPES, CODING_EXPERIENCE, WORKSHOP_INTEREST } from '../constants';
 import styles from '../styles/SurveyForm.module.css';
 
 export default function SurveyForm() {
@@ -41,7 +41,7 @@ export default function SurveyForm() {
       >
         {({ isSubmitting }) => {
           if (isSubmitting) {
-            return <div>Submitting comment…</div>;
+            return <div>Submitting survey response…</div>;
           }
           if (hasSubmitCompleted) {
             return (
@@ -66,10 +66,68 @@ export default function SurveyForm() {
                 <ErrorMessage name="jobType" />
               </small>
 
+              <label htmlFor="yearsProgramming">
+                How many years have you been programming for?
+              </label>
+              <Field as="select" name="yearsProgramming">
+                {CODING_EXPERIENCE.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </Field>
+              <small>
+                <ErrorMessage name="yearsProgramming" />
+              </small>
+
+              <label htmlFor="yearsProgrammingReact">
+                How many years have you been programming using React?
+              </label>
+              <Field as="select" name="yearsProgrammingReact">
+                {CODING_EXPERIENCE.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </Field>
+              <small>
+                <ErrorMessage name="yearsProgrammingReact" />
+              </small>
+
               <label htmlFor="likes">What do you like about React?</label>
-              <Field id="likes" name="likes" placeholder="Add your answer" />
+              <Field
+                id="likes"
+                name="likes"
+                placeholder="Add your answer"
+                as="textarea"
+              />
               <small>
                 <ErrorMessage name="likes" />
+              </small>
+
+              <label htmlFor="dislikes">What do you dislike about React?</label>
+              <Field
+                id="dislikes"
+                name="dislikes"
+                placeholder="Add your answer"
+                as="textarea"
+              />
+              <small>
+                <ErrorMessage name="dislikes" />
+              </small>
+
+              <label htmlFor="workshopInterest">
+                Are you interested in attending an in-person React workshop?
+              </label>
+              <Field as="select" name="workshopInterest">
+                {WORKSHOP_INTEREST.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </Field>
+              <small>
+                <ErrorMessage name="workshopInterest" />
               </small>
 
               <button

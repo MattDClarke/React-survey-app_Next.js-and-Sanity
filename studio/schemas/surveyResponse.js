@@ -8,6 +8,7 @@ const JOB_TYPES = [
 ];
 
 const WORKSHOP_INTEREST = ['yes', 'no', 'maybe'];
+const CODING_EXPERIENCE = ['0-1', '1-2', '2-4', '4-6', '6+'];
 
 export default {
   name: 'surveyResponse',
@@ -31,14 +32,24 @@ export default {
     {
       name: 'yearsProgramming',
       title: 'Number of years programming',
-      type: 'number',
-      validation: (Rule) => Rule.required().min(1).max(2).precision(1),
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required().custom((yearsProgramming) => {
+          return CODING_EXPERIENCE.includes(yearsProgramming)
+            ? true
+            : 'Invalid number of years programming range';
+        }),
     },
     {
       name: 'yearsProgrammingReact',
       title: 'Number of years programming using React',
-      type: 'number',
-      validation: (Rule) => Rule.required().min(1).max(2).precision(1),
+      type: 'string',
+      validation: (Rule) =>
+        Rule.required().custom((yearsProgrammingReact) => {
+          return CODING_EXPERIENCE.includes(yearsProgrammingReact)
+            ? true
+            : 'Invalid number of years programming React range';
+        }),
     },
     {
       name: 'likes',

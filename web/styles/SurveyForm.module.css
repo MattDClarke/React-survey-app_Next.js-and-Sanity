@@ -1,11 +1,13 @@
 .formContainer {
   padding: 2rem;
+  box-shadow: 1px 3px 3px 3px #e7ebf1;
+  border-radius: var(--border-radius);
 }
 
 .form label {
   display: block;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 500;
   padding: 0.25rem 0;
 }
 
@@ -25,6 +27,7 @@
 .button:hover,
 .button:focus {
   background-color: var(--color-primary-dark);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .button[disabled] {
