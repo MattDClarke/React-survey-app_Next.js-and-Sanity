@@ -1,6 +1,13 @@
 # Sanity Survey Content Studio
 
 ## Getting started
+
+- install packages:
+
+```bash
+yarn dev
+```
+
 - Install the Sanity command line tool:
 
 ```bash
@@ -14,12 +21,17 @@ sanity init --reconfigure
 ```
 
 ## Development
+
 - To open Sanity Studio in the local host server:
 
 ```bash
 npm start
 ```
 
+## Deployment
+
+- run `sanity deploy`
+- you will be asked to provide a studio hostname - must be unique
 
 ## Resources
 

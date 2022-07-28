@@ -56,6 +56,9 @@ export default function SurveyForm() {
                 Are you a professional programmer or a student?
               </label>
               <Field as="select" name="jobType">
+                <option disabled defaultValue value="">
+                  select an option
+                </option>
                 {JOB_TYPES.map((job) => (
                   <option key={job.value} value={job.value}>
                     {job.title}
@@ -70,6 +73,9 @@ export default function SurveyForm() {
                 How many years have you been programming for?
               </label>
               <Field as="select" name="yearsProgramming">
+                <option disabled defaultValue value="">
+                  select an option
+                </option>
                 {CODING_EXPERIENCE.map((value) => (
                   <option key={value} value={value}>
                     {value}
@@ -84,6 +90,9 @@ export default function SurveyForm() {
                 How many years have you been programming using React?
               </label>
               <Field as="select" name="yearsProgrammingReact">
+                <option disabled defaultValue value="">
+                  select an option
+                </option>
                 {CODING_EXPERIENCE.map((value) => (
                   <option key={value} value={value}>
                     {value}
