@@ -129,6 +129,9 @@ export default function SurveyForm() {
                 Are you interested in attending an in-person React workshop?
               </label>
               <Field as="select" name="workshopInterest">
+                <option disabled defaultValue value="">
+                  select an option
+                </option>
                 {WORKSHOP_INTEREST.map((value) => (
                   <option key={value} value={value}>
                     {value}
