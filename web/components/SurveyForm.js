@@ -142,11 +142,7 @@ export default function SurveyForm() {
                 <ErrorMessage name="workshopInterest" />
               </small>
 
-              <button
-                type="submit"
-                className={styles.button}
-                disabled={isSubmitting}
-              >
+              <button type="submit" className={styles.button}>
                 Submit
               </button>
             </Form>
