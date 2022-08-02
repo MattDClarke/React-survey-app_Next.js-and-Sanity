@@ -1,11 +1,11 @@
-# Sanity Survey Content Studio
+# Sanity Content Studio for survey data
 
 ## Getting started
 
-- install packages:
+- install dependencies:
 
 ```bash
-yarn dev
+yarn install
 ```
 
 - Install the Sanity command line tool:
@@ -25,12 +25,18 @@ sanity init --reconfigure
 - To open Sanity Studio in the local host server:
 
 ```bash
-npm start
+npm start 
+# or
+yarn start
 ```
 
 ## Deployment
 
-- run `sanity deploy`
+- run: 
+```bash
+sanity deploy
+```
+
 - you will be asked to provide a studio hostname - must be unique
 
 ## Resources
